@@ -1,6 +1,5 @@
-
 class AbstractHeap():
-    __init__(self, sourceCollection = None):
+    def __init__(self, sourceCollection = None):
         self.size = 0
         if sourceCollection != None:
             if not iter(sourceCollection):
@@ -8,8 +7,8 @@ class AbstractHeap():
             for item in sourceCollection:
                 self.add()
 
-    __str__(self):
+    def __str__(self):
         return str(map(str, self))
 
-    __add__(self, item):
+    def __add__(self, item):
         self.push(item)
