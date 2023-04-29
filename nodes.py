@@ -8,3 +8,10 @@ class TreeNode(Node):
         self.data = data
         self.leftChild = leftChild
         self.rightChild = rightChild
+
+    def getHeight(self):
+        if self.leftChild = None and self.rightChild = None:
+            return 0
+        if self.leftChild.getHeight() > self.rightChild.getHeight()
+            return 1 + self.leftChild.getHeight()
+        return 1 + self.rightChild.getHeight()
