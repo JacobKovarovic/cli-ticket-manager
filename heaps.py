@@ -8,7 +8,7 @@ class AbstractHeap():
             if not iter(sourceCollection):
                 raise TypeError("Source collection must be iterable")
             for item in sourceCollection:
-                self.add(item)
+                self.push(item)
 
     def __str__(self):
         return str(map(str, self))
@@ -16,3 +16,23 @@ class AbstractHeap():
 class MinHeap(AbstractHeap):
     def __init__(self, sourceCollection = None):
         super(sourceCollection)
+
+    def push(self, item):
+        if self.head == None:
+            self.head = TreeNode(item)
+            return
+        _pushNode(self.head, TreeNode(item))
+
+    def _pushNode(self, currNode, newNode):
+        if type(newNode) != type(TreeNode()):
+            raise TypeError("Cannot push non-TreeNode object")
+        if currNode.leftChild == None:
+            currNode.leftChild = newNode
+            return
+        if currNode.rightChild == None:
+            currNode.rightChild = newNode
+            return
+        if currNode.leftChild.height == currNode.rightChild.height:
+            self._pushNode(currNode.leftChild, newNode)
+        if currNode.leftChild.height > currNode.rightChild.height:
+            self._pushNode(currNode.rightChild, newNode)
