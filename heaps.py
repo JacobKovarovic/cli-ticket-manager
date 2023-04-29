@@ -32,7 +32,9 @@ class MinHeap(AbstractHeap):
         if currNode.rightChild == None:
             currNode.rightChild = newNode
             return
-        if currNode.leftChild.height == currNode.rightChild.height:
+        leftHeight = currNode.leftChild.getHeight()
+        rightHeight = currNode.rightChild.getHeight()
+        if leftHeight == rightHeight:
             self._pushNode(currNode.leftChild, newNode)
-        if currNode.leftChild.height > currNode.rightChild.height:
+        if leftHeight > rightHeight:
             self._pushNode(currNode.rightChild, newNode)
