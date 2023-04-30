@@ -16,7 +16,7 @@ class TreeNode():
         return 1 + self.rightChild.getHeight()
 
     def clone(self):
-        return TreeNode(self.data)
+        return TreeNode(self.data, self.leftChild, self.rightChild)
     
     def __str__(self):
         return str(self.data) + "(" + str(self.leftChild) + ", " + str(self.rightChild) + ")"
