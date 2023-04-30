@@ -1,5 +1,5 @@
 import json
-from src.check_login import check_login
+from src.user_operations import check_login
 
 check_login()
 usersFile = open('users.json', 'r')
