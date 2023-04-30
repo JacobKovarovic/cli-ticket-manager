@@ -15,6 +15,7 @@ class Task():
         self.leadDays = leadDays
         self.dueDate = date.today() + timedelta(days=self.leadDays)
         self.priority = priority
+        self.claimedBy = None
         self.finished = False
 
     def __lt__(self, other):
