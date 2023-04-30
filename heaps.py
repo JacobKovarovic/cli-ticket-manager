@@ -5,8 +5,7 @@ class _AbstractHeap():
         self.size = 0
         self.head = None
         if sourceCollection != None:
-            if not iter(sourceCollection):
-                raise TypeError("Source collection must be iterable")
+            print("Adding source collection!")
             for item in sourceCollection:
                 self.push(item)
 
@@ -14,6 +13,18 @@ class _AbstractHeap():
         if self.isEmpty():
             raise KeyError("Heap is empty")
         return self._toStringPreorder(self.head)
+    
+    def __iter__(self):
+        if self.head == None:
+            raise KeyError("Heap is empty")
+        def preorder(currNode):
+            data = [currNode.data]
+            if currNode.leftChild != None:
+                data += preorder(currNode.leftChild)
+            if currNode.rightChild != None:
+                data += preorder(currNode.rightChild)
+            return data
+        return iter(preorder(self.head))
 
     def _toStringPreorder(self, currNode):
         if currNode == None:
@@ -28,10 +39,9 @@ class _AbstractHeap():
     def isEmpty(self):
         return self.head == None
     
-    def clone(self):
-        newHeap = self.__init__()
+    def clear(self):
         while not self.isEmpty():
-            newHeap.push(self.pop())
+            self.pop()
 
     def getDeepestParent(self):
         if self.isEmpty():
@@ -69,6 +79,11 @@ class _AbstractHeap():
 class MinHeap(_AbstractHeap):
     def __init__(self, sourceCollection = None):
         super().__init__(sourceCollection)
+
+    def clone(self):
+        print("Cloning!")
+        print([item for item in self])
+        return MinHeap([item for item in self])
 
     def push(self, item):
         self.size += 1
