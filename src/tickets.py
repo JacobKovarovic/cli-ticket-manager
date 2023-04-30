@@ -6,7 +6,7 @@ class Ticket:
         self.title = title
         self.description = description
         self.tasks = Queue(tasks)
-        self.leadDays = sum([task.leadDays() for task in tasks])
+        self.leadDays = sum([task.getLeadDays() for task in tasks])
         self.dueDate = date.today() + timedelta(days=self.leadDays)
         self.priority = priority
         self.creationDate = date.today()
@@ -33,7 +33,13 @@ class Ticket:
                self.closed == other.closed
     
     def __str__(self):
-        result = ""
+        closed = "Yes" if self.isClosed() else "No"
+        result = f"Ticket: {self.title}\n"
+        result += f"{self.description}\n\n"
+        result += f"Due Date: {self.dueDate}\n"
+        result += f"Priority: {self.priority}\n"
+        result += f"Closed: {closed}\n"
+        result += "===================================\n"
         for task in self.tasks:
             result += str(task) + "\n"
         return result
@@ -41,14 +47,18 @@ class Ticket:
     def _updateCompletionStatus(self):
         if self.getNextTask().isFinished == True:
             self.close()
+            input("Final task complete! Ticket closed")
 
     def getNextTask(self):
         return self.tasks.peek()
     
     def finishNextTask(self):
-        yn = input(f"Are you sure you want to mark the following task as complete?:\n{self.getNextTask}\n")
+        yn = input(f"Are you sure you want to mark the following task as complete?:\n{self.getNextTask()}\n(y/n): ")
         if yn.lower() == 'y':
-            self.tasks.push(self.tasks.pop().finishTask)
+            finishedTask = self.tasks.dequeue()
+            finishedTask.finishTask()
+            self.tasks.enqueue(finishedTask)
+            input("Task marked complete. Return to continue")
             self._updateCompletionStatus()
         print("Cancelling.\n")
             

@@ -38,18 +38,21 @@ class Task():
                self.finished == other.finished
     
     def __str__(self):
-        complete = "Yes" if self.finished else "No"
+        complete = "Yes" if self.isFinished() else "No"
         s = f"{type(self).__name__}: {self.description}\n"
         s += f"Team: {self.team}\n"
         s += f"Due Date: {self.dueDate}\n"
         s += f"Priority: {self.priority}\n"
-        s += f"Complete: {complete}"
+        s += f"Complete: {complete}\n"
         return s
     
     def daysTilDue(self):
         day1 = date.strptime(date.today(), "%Y-%m-%d")
         day2 = date.strptime(self.dueDate, "%Y-%m-%d")
         return abs((day2 - day1).days)
+    
+    def getLeadDays(self):
+        return self.leadDays
     
     def getTeam(self):
         return self.team
