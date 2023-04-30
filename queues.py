@@ -61,13 +61,24 @@ class Queue(_AbstractQueue):
     
     def peek(self):
         return self.front.data
-"""
-class PriorityQueue():
-    def __init__(self, sourceCollection = None)
-        self.items = MinHeap()
+
+class PriorityQueue(_AbstractQueue):
+    def __init__(self, sourceCollection = None):
+        self.heap = MinHeap()
         super().__init__(sourceCollection)
+
+    def clone(self):
+        return PriorityQueue([item for item in self.heap])
+
     def enqueue(self, item):
-        
+        self.heap.push(item)
+        self.size += 1
 
     def dequeue(self):
-"""
+        if self.isEmpty():
+            raise KeyError("Queue is empty")
+        self.size -= 1
+        return self.heap.pop()
+    
+    def peek(self):
+        return self.heap.peek()
