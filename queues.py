@@ -26,6 +26,8 @@ class Queue(_AbstractQueue):
         super().__init__(sourceCollection)
 
     def clone(self):
+        if self.isEmpty():
+            return Queue()
         items = []
         probe = self.front
         while probe != None:
@@ -68,6 +70,8 @@ class PriorityQueue(_AbstractQueue):
         super().__init__(sourceCollection)
 
     def clone(self):
+        if self.isEmpty():
+            return PriorityQueue()
         return PriorityQueue([item for item in self.heap])
 
     def enqueue(self, item):
