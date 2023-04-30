@@ -16,6 +16,13 @@ class _AbstractQueue():
             result += str(copyQueue.dequeue()) + " | "
         result += "Rear"
         return result
+    
+    def __iter__(self):
+        result = []
+        copyQueue = self.clone()
+        while copyQueue.isEmpty():
+            result.append(copyQueue.dequeue())
+        return iter(result)
 
     def isEmpty(self):
         return self.size == 0
