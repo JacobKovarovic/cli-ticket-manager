@@ -2,7 +2,7 @@ from datetime import date, timedelta
 
 class Task():
 
-    AVAILABLE_TEAMS = ["Programming", "Art", "Sound", "QA", "Management"]
+    AVAILABLE_TEAMS = ["programming", "art", "sound", "quality assurance", "management"]
 
     def __init__(self, description, team, leadDays, priority):
         if team not in Task.AVAILABLE_TEAMS:
