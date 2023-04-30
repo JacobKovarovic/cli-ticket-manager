@@ -11,6 +11,8 @@ class Task():
                              {Task.AVAILABLE_TEAMS}")
         self.description = description
         self.team = team
+        self.dateCreated = date.today()
+        self.leadDays = leadDays
         self.dueDate = date.today() + timedelta(days=leadDays)
         self.priority = priority
         self.finished = False
@@ -28,7 +30,12 @@ class Task():
     def __eq__(self, other):
         if type(other) != type(self):
             raise TypeError("Only Tasks can be compared to Tasks")
-        return self == other
+        return self.description == other.description and \
+               self.team == other.team and \
+               self.dateCreated == other.dateCreated and \
+               self.leadDays == other.leadDays and \
+               self.priority == other.priority and \
+               self.finished == other.finished
     
     def __str__(self):
         s = f"{type(self).__name__}: {self.description}\n"
