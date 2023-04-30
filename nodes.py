@@ -5,15 +5,16 @@ class TreeNode():
         self.rightChild = rightChild
 
     def getHeight(self):
-        if self.leftChild == None and self.rightChild == None:
+        return self._getHeight(self)
+    
+    def _getHeight(self, currNode):
+        if currNode == None or (currNode.leftChild == None and currNode.rightChild == None):
             return 0
-        if self.leftChild == None:
-            return 1 + self.rightChild.getHeight()
-        if self.rightChild == None:
-            return 1 + self.leftChild.getHeight()
-        if self.leftChild.getHeight() > self.rightChild.getHeight():
-            return 1 + self.leftChild.getHeight()
-        return 1 + self.rightChild.getHeight()
+        leftHeight = self._getHeight(currNode.leftChild)
+        rightHeight = self._getHeight(currNode.rightChild)
+        if leftHeight > rightHeight:
+            return 1 + leftHeight
+        return 1 + rightHeight
 
     def clone(self):
         return TreeNode(self.data, self.leftChild, self.rightChild)
