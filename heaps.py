@@ -70,34 +70,24 @@ class MinHeap(_AbstractHeap):
         self._push(self.head, TreeNode(item))
 
     def _push(self, currNode, newNode):
-        if currNode.leftChild == None:
-            if newNode.data < currNode.data:
-                tempData = currNode.data
-                currNode.data = newNode.data
-                self._push(self.head, TreeNode(tempData))
-                return
-            currNode.leftChild = newNode
-            return
-        if currNode.rightChild == None:
-            if newNode.data < currNode.data:
-                tempData = currNode.data
-                currNode.data = newNode.data
-                self._push(self.head, TreeNode(tempData))
-                return
-            currNode.rightChild = newNode
-            return
         if newNode.data < currNode.data:
             tempData = currNode.data
             currNode.data = newNode.data
             self._push(self.head, TreeNode(tempData))
             return
-        leftHeight = currNode.leftChild.getHeight()
-        rightHeight = currNode.rightChild.getHeight()
-        if leftHeight == rightHeight:
+        if currNode.leftChild == None:
+            currNode.leftChild = newNode
+            return
+        if currNode.rightChild == None:
+            currNode.rightChild = newNode
+            return
+        if currNode.isComplete():
             self._push(currNode.leftChild, newNode)
             return
-        if leftHeight > rightHeight:
+        if currNode.leftChild.isComplete():
             self._push(currNode.rightChild, newNode)
+            return
+        self._push(currNode.leftChild, newNode)
 
     def pop(self):
         if self.isEmpty():

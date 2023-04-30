@@ -1,1 +1,18 @@
 from heaps import MinHeap
+
+myheap = MinHeap()
+myheap.push(3)
+myheap.push(5)
+myheap.push(10)
+myheap.push(2)
+myheap.push(15)
+myheap.push(20)
+myheap.push(25)
+print(myheap)
+myheap.pop()
+print(myheap)
+myheap.push(7)
+myheap.pop()
+print(myheap)
+myheap.pop()
+print(myheap)
