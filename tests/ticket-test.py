@@ -1,3 +1,8 @@
+# Set path for module imports from parent directory
+import os
+import sys
+sys.path.insert(1, os.path.join(sys.path[0], '..')) 
+
 from src.tasks import Task
 from src.tickets import Ticket
 
