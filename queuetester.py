@@ -1,4 +1,4 @@
-from queues import Queue, PriorityQueue
+from src.queues import Queue, PriorityQueue
 
 q = Queue()
 pq = PriorityQueue()

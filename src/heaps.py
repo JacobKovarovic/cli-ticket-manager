@@ -1,4 +1,4 @@
-from nodes import TreeNode
+from src.nodes import TreeNode
 
 class _AbstractHeap():
     def __init__(self, sourceCollection = None):

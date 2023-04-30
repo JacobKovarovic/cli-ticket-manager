@@ -1,4 +1,4 @@
-from heaps import MinHeap, _AbstractHeap
+from src.heaps import MinHeap, _AbstractHeap
 
 myheap = MinHeap()
 abstractHeap = _AbstractHeap

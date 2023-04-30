@@ -1,4 +1,3 @@
-from queues import Queue
 from datetime import date, timedelta
 
 class Task():
@@ -12,9 +11,9 @@ class Task():
                              {Task.AVAILABLE_TEAMS}")
         self.description = description
         self.team = team
-        self.creationDate = date.today()
         self.dueDate = date.today() + timedelta(days=leadDays)
         self.priority = priority
+        self.finished = False
 
     def __lt__(self, other):
         if type(other) != type(self):
@@ -45,3 +44,6 @@ class Task():
     
     def getTeam(self):
         return self.team
+    
+    def finishTask(self):
+        self.finished = True

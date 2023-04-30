@@ -1,5 +1,5 @@
-from nodes import Node
-from heaps import MinHeap
+from src.nodes import Node
+from src.heaps import MinHeap
 
 class _AbstractQueue():
     def __init__(self, sourceCollection = None):
