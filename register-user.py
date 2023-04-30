@@ -5,8 +5,20 @@ AVAILABLE_TEAMS = ["programming", "art", "sound", "quality assurance", "manageme
 validUsername = False
 validTeam = False
 
+usersFile = open('users.json', 'r')
+fileContents = usersFile.readline()
+if fileContents != '':
+    users = json.loads(fileContents)
+else:
+    users = []
+usersFile.close()
+
 while not validUsername:
     username = input("Please input new user's username: ")
+    if users != []:
+        if username in [user[0] for user in users]:
+            print("Username taken.")
+            continue
     validUsername = re.search("^[a-z0-9_-]{3,15}$", username) == None
     if not validUsername:
         print("Username must be 3-15 alphanumeric characters.")
@@ -17,14 +29,6 @@ while not validTeam:
     validTeam = team.lower() in AVAILABLE_TEAMS
     if not validTeam:
         print("User must be in one of the teams listed.")
-
-usersFile = open('users.json', 'r')
-fileContents = usersFile.readline()
-if fileContents != '':
-    users = json.loads(fileContents)
-else:
-    users = []
-usersFile.close()
 
 users.append([username, team])
 
