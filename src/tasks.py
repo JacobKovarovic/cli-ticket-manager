@@ -61,6 +61,12 @@ class Task():
     def isFinished(self):
         return self.finished
     
+    def setOwner(self, username):
+        self.claimedBy = username
+    
+    def getOwner(self):
+        return self.claimedBy
+    
     def finishTask(self):
         self.finished = True
         return self
