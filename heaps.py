@@ -21,9 +21,17 @@ class _AbstractHeap():
         if currNode.leftChild == None and currNode.rightChild == None:
             return str(currNode.data)
         return str(currNode.data) + "(" + self._toStringPreorder(currNode.leftChild) + ", " + self._toStringPreorder(currNode.rightChild) + ")"
+        
+    def printLikeTree(self):
+        self.head.printLikeTree()
 
     def isEmpty(self):
         return self.head == None
+    
+    def clone(self):
+        newHeap = self.__init__()
+        while not self.isEmpty():
+            newHeap.push(self.pop())
 
     def getDeepestParent(self):
         if self.isEmpty():
