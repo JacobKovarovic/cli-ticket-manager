@@ -20,7 +20,7 @@ class _AbstractQueue():
     def __iter__(self):
         result = []
         copyQueue = self.clone()
-        while copyQueue.isEmpty():
+        while not copyQueue.isEmpty():
             result.append(copyQueue.dequeue())
         return iter(result)
 
