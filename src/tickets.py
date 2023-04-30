@@ -26,7 +26,7 @@ class Ticket:
         if type(other) != type(self):
             raise TypeError("Only Tickets can be compared to Tickets")
         return self.title == other.title and \
-               self.descriptio == other.description and \
+               self.description == other.description and \
                self.tasks == other.tasks and \
                self.priority == other.priority and \
                self.creationDate == other.creationDate and \
