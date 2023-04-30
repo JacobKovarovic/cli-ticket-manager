@@ -1,9 +1,8 @@
 import json
 from sys import exit
 
-
 session = open("session.json", 'r')
-if session.readline() == '':
+if session.readline() != '':
     session.close()
     usersFile = open('users.json', 'r')
     fileContents = usersFile.readline()
