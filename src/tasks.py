@@ -13,7 +13,7 @@ class Task():
         self.team = team
         self.dateCreated = date.today()
         self.leadDays = leadDays
-        self.dueDate = date.today() + timedelta(days=leadDays)
+        self.dueDate = date.today() + timedelta(days=self.leadDays)
         self.priority = priority
         self.finished = False
 
@@ -38,10 +38,12 @@ class Task():
                self.finished == other.finished
     
     def __str__(self):
+        complete = "Yes" if self.finished else "No"
         s = f"{type(self).__name__}: {self.description}\n"
         s += f"Team: {self.team}\n"
         s += f"Due Date: {self.dueDate}\n"
         s += f"Priority: {self.priority}\n"
+        s += f"Complete: {complete}"
         return s
     
     def daysTilDue(self):
@@ -52,5 +54,9 @@ class Task():
     def getTeam(self):
         return self.team
     
+    def isFinished(self):
+        return self.finished
+    
     def finishTask(self):
         self.finished = True
+        return self
