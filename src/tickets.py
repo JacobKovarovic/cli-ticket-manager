@@ -90,9 +90,9 @@ class Ticket:
         Precondition: All tasks in a ticket are finished
         Postcondition: Ticket is set to closed
         """
-        if self.getNextTask().isFinished == True:
+        if self.getNextTask().isFinished() == True:
             self.close()
-            input("Final task complete! Ticket closed")
+            input("Final task complete! Ticket closed. Return to continue. ")
 
     def getTitle(self):
         """
