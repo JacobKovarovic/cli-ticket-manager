@@ -8,6 +8,8 @@ class Ticket:
         self.description = description
         if type(tasks[0]) == list:
             tasks = [Task(*tuple(task)) for task in tasks]
+        for task in tasks:
+            task.setParentTicket(self.title)
         self.tasks = Queue(tasks)
         self.priority = priority
         self.creationDate = creationDate

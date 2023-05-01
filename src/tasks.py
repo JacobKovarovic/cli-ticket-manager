@@ -18,6 +18,7 @@ class Task():
         self.dueDate = self.dateCreated + timedelta(days=self.leadDays)
         self.priority = priority
         self.claimedBy = claimedBy
+        self.parentTicket = None
         self.finished = finished
 
     def __lt__(self, other):
@@ -67,6 +68,9 @@ class Task():
     
     def isFinished(self):
         return self.finished
+    
+    def setParentTicket(self, ticketName):
+        self.parentTicket = ticketName
     
     def setOwner(self, username):
         self.claimedBy = username
