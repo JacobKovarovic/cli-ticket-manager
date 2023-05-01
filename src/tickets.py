@@ -43,7 +43,7 @@ class Ticket:
     def __str__(self):
         closed = "Yes" if self.isClosed() else "No"
         result = f"Ticket: {self.title}\n"
-        result += f"{self.description}\n\n"
+        result += f"{self.description}\n"
         result += f"Due Date: {self.dueDate}\n"
         result += f"Priority: {self.priority}\n"
         result += f"Closed: {closed}\n"
