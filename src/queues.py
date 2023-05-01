@@ -10,11 +10,10 @@ class _AbstractQueue():
                 self.enqueue(item)
 
     def __str__(self):
-        result = "Front | "
+        result = "\n"
         copyQueue = self.clone()
         while not copyQueue.isEmpty():
-            result += str(copyQueue.dequeue()) + " | "
-        result += "Rear"
+            result += str(copyQueue.dequeue()) + "\n"
         return result
     
     def __repr__(self):
