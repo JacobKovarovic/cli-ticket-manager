@@ -6,6 +6,7 @@ from src.user_operations import check_logged_out, get_loggedin_user, load_ticket
 
 check_logged_out()
 user = get_loggedin_user()
+allTickets = load_tickets()
 
 if user[1] != 'management':
     exit("Only managers can create tickets!")
@@ -13,6 +14,10 @@ if user[1] != 'management':
 AVAILABLE_TEAMS = ["programming", "art", "sound", "quality assurance", "management"]
 
 title = input("Input ticket title: ")
+if allTickets != []:
+    if title in [ticket.getTitle for ticket in allTickets]:
+        raise ValueError("Cannot create duplicate ticket.")
+
 ticket_description = input("Input ticket description: ")
 tasks = []
 
@@ -62,7 +67,6 @@ while not valid_priority:
 
 newTicket = Ticket(title, ticket_description, tasks, priority)
 
-allTickets = load_tickets()
 allTickets.append(newTicket)
 store_tickets(allTickets)
 print("New ticket has been created.")
