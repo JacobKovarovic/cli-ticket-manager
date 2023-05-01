@@ -14,7 +14,7 @@ for ticket in allTickets:
                 relevantTasks.enqueue(task)
 
 if relevantTasks.isEmpty():
-    print("No tickets, your team is all clear!")
+    print("No tickets found, your team is all clear!")
 else:
     for task in relevantTasks:
         print(task.getParentTicket())
