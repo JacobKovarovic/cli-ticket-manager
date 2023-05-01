@@ -55,3 +55,6 @@ def store_tickets(tickets):
     ticketFile = open("tickets.json", 'w')
     ticketFile.write(json.dumps([ticket.toList() for ticket in tickets]))
     ticketFile.close()
+
+if __name__ == "__main__":
+    pass
