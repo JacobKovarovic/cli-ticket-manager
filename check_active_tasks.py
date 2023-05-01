@@ -7,9 +7,10 @@ allTickets = load_tickets()
 
 relevantTickets = PriorityQueue()
 for ticket in allTickets:
-    for task in ticket.getUnfinishedTasks():
-        if task.getTeam() == user[1]:
-            relevantTickets.enqueue(task)
+    if not ticket.isClosed():
+        for task in ticket.getUnfinishedTasks():
+            if task.getTeam() == user[1]:
+                relevantTickets.enqueue(task)
 
 if relevantTickets.isEmpty():
     print("No tickets, your team is all clear!")
