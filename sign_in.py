@@ -1,7 +1,7 @@
 import json
-from src.user_operations import check_login
+from src.user_operations import check_logged_in
 
-check_login()
+check_logged_in()
 usersFile = open('users.json', 'r')
 fileContents = usersFile.readline()
 if fileContents == '':
@@ -23,3 +23,4 @@ session = open('session.json', 'w')
 session.write(json.dumps([user for user in users if user[0] == username][0]))
 session.close()
 
+print(f"User {username} has been logged in.")

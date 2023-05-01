@@ -1,16 +1,24 @@
 from src.queues import Queue
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+from src.tasks import Task
 
 class Ticket:
-    def __init__(self, title, description, tasks, priority):
+    def __init__(self, title, description, tasks, priority, leadDays = None, creationDate = date.today(), closed = False):
         self.title = title
         self.description = description
+        if type(tasks[0]) == list:
+            tasks = [Task(*tuple(task)) for task in tasks]
         self.tasks = Queue(tasks)
-        self.leadDays = sum([task.getLeadDays() for task in tasks])
-        self.dueDate = date.today() + timedelta(days=self.leadDays)
         self.priority = priority
-        self.creationDate = date.today()
-        self.closed = False
+        self.creationDate = creationDate
+        if type(self.creationDate) == str:
+            self.creationDate = datetime.strptime(self.creationDate, '%Y, %m, %d')
+        if leadDays == None:
+            self.leadDays = sum([task.getLeadDays() for task in tasks])
+        else:
+            self.leadDays = leadDays
+        self.dueDate = self.creationDate + timedelta(days=self.leadDays)
+        self.closed = closed
 
     def __lt__(self, other):
         if type(other) != type(self):
@@ -43,6 +51,11 @@ class Ticket:
         for task in self.tasks:
             result += str(task) + "\n"
         return result
+    
+    def toList(self):
+        return [self.title, self.description, [task.toList() for task in self.tasks],
+                self.priority, self.leadDays, self.creationDate.strftime("%Y, %m, %d"),
+                self.closed]
     
     def _updateCompletionStatus(self):
         if self.getNextTask().isFinished == True:

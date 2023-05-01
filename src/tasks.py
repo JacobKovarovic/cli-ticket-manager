@@ -1,22 +1,24 @@
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 class Task():
 
     AVAILABLE_TEAMS = ["programming", "art", "sound", "quality assurance", "management"]
 
-    def __init__(self, description, team, leadDays, priority):
+    def __init__(self, description, team, leadDays, priority, dateCreated = date.today(), claimedBy = None, finished = False):
         if team not in Task.AVAILABLE_TEAMS:
             raise ValueError(f"Invalid team: {team}\n \
                              Please assign each task to one of the following teams: \
                              {Task.AVAILABLE_TEAMS}")
         self.description = description
         self.team = team
-        self.dateCreated = date.today()
+        self.dateCreated = dateCreated
+        if type(self.dateCreated) == str:
+            self.dateCreated = datetime.strptime(self.dateCreated, '%Y, %m, %d').date()
         self.leadDays = leadDays
-        self.dueDate = date.today() + timedelta(days=self.leadDays)
+        self.dueDate = self.dateCreated + timedelta(days=self.leadDays)
         self.priority = priority
-        self.claimedBy = None
-        self.finished = False
+        self.claimedBy = claimedBy
+        self.finished = finished
 
     def __lt__(self, other):
         if type(other) != type(self):
@@ -47,9 +49,14 @@ class Task():
         s += f"Complete: {complete}\n"
         return s
     
+    def toList(self):
+        return [self.description, self.team, self.leadDays,
+                self.priority, self.dateCreated.strftime("%Y, %m, %d"), self.claimedBy,
+                self.finished]
+    
     def daysTilDue(self):
-        day1 = date.strptime(date.today(), "%Y-%m-%d")
-        day2 = date.strptime(self.dueDate, "%Y-%m-%d")
+        day1 = date.today().strftime("%Y, %m, %d")
+        day2 = self.dueDate.strftime("%Y, %m, %d")
         return abs((day2 - day1).days)
     
     def getLeadDays(self):
