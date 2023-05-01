@@ -66,10 +66,10 @@ class Ticket:
         return self.tasks.peek()
     
     def getUnfinishedTasks(self):
-        return [task for task in self.tasks if not task.isFinished]
+        return [task for task in self.tasks if not task.isFinished()]
     
     def getFinishedTasks(self):
-        return [task for task in self.tasks if task.isFinished]
+        return [task for task in self.tasks if task.isFinished()]
     
     def finishNextTask(self):
         yn = input(f"Are you sure you want to mark the following task as complete?:\n{self.getNextTask()}\n(y/n): ")
