@@ -71,6 +71,9 @@ class Task():
     
     def setParentTicket(self, ticketName):
         self.parentTicket = ticketName
+
+    def getParentTicket(self):
+        return self.parentTicket
     
     def setOwner(self, username):
         self.claimedBy = username
