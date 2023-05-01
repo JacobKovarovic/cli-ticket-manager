@@ -1,5 +1,11 @@
+"""
+Prints all tasks claimed by the user in priority order.
+If no tasks have been claimed, displays the message "User has no claimed tasks."
+"""
+
 from textwrap import indent
 from src.user_operations import check_logged_out, load_tickets, get_loggedin_user
+from src.queues import PriorityQueue
 
 check_logged_out()
 user = get_loggedin_user()
@@ -8,12 +14,17 @@ if allTickets == []:
     raise ValueError("No tickets.")
 
 hasTask = False
+pq = PriorityQueue()
 for ticket in allTickets:
-    if not ticket.isClosed() and ticket.getNextTask().getOwner() == user[0]:
-        task = ticket.getNextTask()
-        print(task.getParentTicket())
-        print(indent(str(task), "\t"))
+    task = ticket.getNextTask()
+    if not ticket.isClosed() and task.getOwner() == user[0]:
+        pq.enqueue(task)
         hasTask = True
 
 if not hasTask:
     print("User has no claimed tasks.")
+else:
+    print()
+    for task in pq:
+        print(task.getParentTicket())
+        print(indent(str(task), "\t"))
