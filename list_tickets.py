@@ -32,7 +32,12 @@ else:
                 continue
         pq.enqueue(ticket)
     while not pq.isEmpty():
+        nextTicket = pq.dequeue()
         if printTasks:
-            print(pq.dequeue())
+            print(nextTicket)
         else:
-            print(pq.dequeue().getTitle())
+            print(nextTicket.getTitle(), end = "")
+            if printClosed:
+                print(" - Closed" if nextTicket.isClosed() else " - Open")
+            else:
+                print()
