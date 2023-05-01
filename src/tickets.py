@@ -77,14 +77,10 @@ class Ticket:
         return [task for task in self.tasks if task.isFinished()]
     
     def finishNextTask(self):
-        yn = input(f"Are you sure you want to mark the following task as complete?:\n{self.getNextTask()}\n(y/n): ")
-        if yn.lower() == 'y':
-            finishedTask = self.tasks.dequeue()
-            finishedTask.finishTask()
-            self.tasks.enqueue(finishedTask)
-            input("Task marked complete. Return to continue")
-            self._updateCompletionStatus()
-        print("Cancelling.\n")
+        finishedTask = self.tasks.dequeue()
+        finishedTask.finishTask()
+        self.tasks.enqueue(finishedTask)
+        self._updateCompletionStatus()
             
     def daysTilDue(self):
         day1 = date.strptime(date.today(), "%Y-%m-%d")
