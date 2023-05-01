@@ -1,3 +1,8 @@
+"""
+Prints active tasks for user's current team in priority order.
+If there are no active tasks, the message "No tickets found, your team is all clear!" will be displayed.
+"""
+
 from textwrap import indent
 from src.queues import PriorityQueue
 from src.user_operations import load_tickets, check_logged_out, get_loggedin_user

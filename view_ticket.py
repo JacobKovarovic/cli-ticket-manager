@@ -1,6 +1,6 @@
 """
-Precondition: Next task in ticket is available to user's team and not claimed
-Postcondition: Set task to claimed by user if task is not claimed, re-store ticket
+Print ticket information and full task list.
+Usage: view_ticket.py "<ticketName>"
 """
 
 import sys
@@ -8,7 +8,7 @@ from src.user_operations import check_logged_out, load_tickets
 
 check_logged_out()
 if (len(sys.argv) != 2):
-    raise ValueError('Incorrect number of arguments: Usage "check_active_tasks.py "<ticketName>"')
+    raise ValueError('Incorrect number of arguments. Usage: view_ticket.py "<ticketName>"')
 
 allTickets = load_tickets()
 if allTickets == []:

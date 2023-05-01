@@ -1,3 +1,10 @@
+"""
+Prints all open tickets in ticket store.
+Arguments:
+-t, -tasks: Prints all tasks for all tickets.
+-c, -closed: Print closed tickets
+"""
+
 from src.user_operations import check_logged_out, load_tickets
 from src.queues import PriorityQueue
 import sys

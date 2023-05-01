@@ -1,3 +1,11 @@
+"""
+Add new user to users store.
+Username must be 3-15 alphanumeric characters (underscores and hyphens allowed).
+Username must not be taken.
+User must be placed on one of the following teams:
+Programming | Art | Sound | Quality Assurance | Management
+"""
+
 import json
 import re
 
@@ -21,7 +29,7 @@ while not validUsername:
             continue
     validUsername = re.search("^[a-zA-Z0-9_-]{3,15}$", username) is not None
     if not validUsername:
-        print("Username must be 3-15 alphanumeric characters.")
+        print("Username must be 3-15 alphanumeric characters (underscores and hyphens allowed). ")
 
 while not validTeam:
     print("\nTeams:", [item.title() for item in AVAILABLE_TEAMS])

@@ -1,3 +1,9 @@
+"""
+Usage: finish_task.py "<ticketName>"
+Precondition: Next task in given ticket is claimed by user
+Postcondition: Set task to finished, ticket store updated
+"""
+
 import sys
 from src.user_operations import check_logged_out, load_tickets, store_tickets, get_loggedin_user
 

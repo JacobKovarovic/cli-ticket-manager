@@ -1,3 +1,9 @@
+"""
+Trigger a series of prompts to create a new ticket.
+Precondition: User is on management team.
+Postcondition: New ticket is created and stored.
+"""
+
 from sys import exit
 import json
 from src.tickets import Ticket

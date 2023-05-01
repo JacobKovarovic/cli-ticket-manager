@@ -1,4 +1,10 @@
 import json
+"""
+Sign user in.
+Precondition: Username must exist in users store.
+Postcondition: Session file contains signed-in user username and team for other scripts to use
+"""
+
 from src.user_operations import check_logged_in
 
 check_logged_in()

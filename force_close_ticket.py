@@ -1,3 +1,9 @@
+"""
+Usage: force_close_ticket.py "<ticketName>"
+Precondition: Given ticket exists and is not already closed.
+Postcondition: Given ticket is closed.
+"""
+
 import sys
 from src.user_operations import check_logged_out, load_tickets, store_tickets, get_loggedin_user
 
