@@ -62,6 +62,9 @@ class Ticket:
             self.close()
             input("Final task complete! Ticket closed")
 
+    def getTitle(self):
+        return self.title
+
     def getNextTask(self):
         return self.tasks.peek()
     
