@@ -12,6 +12,7 @@ allTickets = load_tickets()
 if allTickets == []:
     raise ValueError("There are no tickets.")
 key = sys.argv[1]
+print()
 for ticket in allTickets:
     if not ticket.isClosed() and ticket.getTitle() == key:
         print(ticket)
