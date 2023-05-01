@@ -1,6 +1,6 @@
-# Set path for module imports from parent directory
 import os
 import sys
+# Set path for module imports from parent directory
 sys.path.insert(1, os.path.join(sys.path[0], '..')) 
 
 from src.heaps import MinHeap, _AbstractHeap

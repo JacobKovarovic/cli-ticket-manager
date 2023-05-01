@@ -1,18 +1,35 @@
 class Node():
+    """
+    Node class for linked structures.
+    Each node has a data pointer and a next pointer
+    to store a reference to next node in chain.
+    """
     def __init__(self, data, next = None):
         self.data = data
         self.next = next
 
 class TreeNode():
+    """
+    TreeNode class for binary tree data structures.
+    Each node has a data pointer and a pointer to a left
+    child node and right child node.
+    """
     def __init__(self, data, leftChild = None, rightChild = None):
         self.data = data
         self.leftChild = leftChild
         self.rightChild = rightChild
 
     def getHeight(self):
+        """
+        Return number of edges between root and deepest leaf.
+        """
         return self._getHeight(self)
     
     def _getHeight(self, currNode):
+        """
+        Helper function for self.getHeight()
+        Recursively finds number of edges between root and deepest leaf.
+        """
         if currNode == None or (currNode.leftChild == None and currNode.rightChild == None):
             return 0
         leftHeight = self._getHeight(currNode.leftChild)
@@ -22,12 +39,22 @@ class TreeNode():
         return 1 + rightHeight
 
     def clone(self):
+        """
+        Return: Copy of tree
+        """
         return TreeNode(self.data, self.leftChild, self.rightChild)
     
     def __str__(self):
+        """
+        Return string representation of tree with node children
+        in nested parenthesis.
+        """
         return str(self.data) + "(" + str(self.leftChild) + ", " + str(self.rightChild) + ")"
     
     def isComplete(self):
+        """
+        Return: True if tree is complete. False if it is not
+        """
         if self.getHeight() == 0:
             return True
         if self.leftChild == None:
@@ -39,6 +66,9 @@ class TreeNode():
         return False
     
     def printLikeTree(self):
+        """
+        Return: String representation of tree that visually resembles a tree.
+        """
         def inorder(currNode, depth):
             dataHeight = [[currNode.data, depth]]
             depth += 1
