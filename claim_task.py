@@ -31,5 +31,4 @@ for ticket in allTickets:
             print(task)
             print("Task claimed.")
 
-    else:
-        raise KeyError("No open ticket with that name found.")
+raise KeyError("No open ticket with that name found.")
