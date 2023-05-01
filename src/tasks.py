@@ -48,6 +48,7 @@ class Task():
         s += f"Due Date: {self.dueDate}\n"
         s += f"Priority: {self.priority}\n"
         s += f"Complete: {complete}\n"
+        s += f"Claimed By: {self.claimedBy}\n"
         return s
     
     def toList(self):
