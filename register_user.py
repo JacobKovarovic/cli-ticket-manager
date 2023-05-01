@@ -19,7 +19,7 @@ while not validUsername:
         if username in [user[0] for user in users]:
             print("Username taken.")
             continue
-    validUsername = re.search("^[a-z0-9_-]{3,15}$", username) == None
+    validUsername = re.search("^[a-zA-Z0-9_-]{3,15}$", username) is not None
     if not validUsername:
         print("Username must be 3-15 alphanumeric characters.")
 
