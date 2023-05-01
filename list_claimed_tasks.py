@@ -7,8 +7,13 @@ allTickets = load_tickets()
 if allTickets == []:
     raise ValueError("No tickets.")
 
+hasTask = False
 for ticket in allTickets:
     if not ticket.isClosed() and ticket.getNextTask().getOwner() == user[0]:
         task = ticket.getNextTask()
         print(task.getParentTicket())
         print(indent(str(task), "\t"))
+        hasTask = True
+
+if not hasTask:
+    print("User has no claimed tasks.")
