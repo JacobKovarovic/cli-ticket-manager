@@ -18,7 +18,7 @@ for ticket in allTickets:
         task = ticket.getNextTask()
         print(f"\n{ticket.getTitle()}")
         print("====================")
-        print(ticket.getNextTask())
+        print(task)
         if task.getTeam() != user[1]:
             raise ValueError("Next task on this ticket is for a different team.")
         if task.getOwner() != None:
@@ -27,8 +27,8 @@ for ticket in allTickets:
         if yn != 'y':
             sys.exit("Cancelling.")
         else:
-            task.setOwner(user[0])
-            print(task)
+            ticket.getNextTask().setOwner(user[0])
+            print(ticket.getNextTask())
             sys.exit("Task claimed.")
 
 raise KeyError("No open ticket with that name found.")
