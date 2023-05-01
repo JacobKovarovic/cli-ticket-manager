@@ -1,6 +1,6 @@
 """
 Precondition: Next task in ticket is available to user's team and not claimed
-Postcondition: Set task to claimed by user if task is not claimed
+Postcondition: Set task to claimed by user if task is not claimed, re-store ticket
 """
 
 import sys
