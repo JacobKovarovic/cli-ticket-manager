@@ -25,10 +25,10 @@ for ticket in allTickets:
             raise ValueError("Task has been claimed by another user.")
         yn = input("Are you sure you want to claim this task (y/n)? ").lower()
         if yn != 'y':
-            exit(sys.exit("Cancelling."))
+            sys.exit("Cancelling.")
         else:
             task.setOwner(user[0])
             print(task)
-            print("Task claimed.")
+            sys.exit("Task claimed.")
 
 raise KeyError("No open ticket with that name found.")
