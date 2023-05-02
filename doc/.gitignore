@@ -1,0 +1,7 @@
+# Ignore all
+*
+
+# Except pydoc output files and self
+!.gitignore
+!frontend_docs.tex
+!backend_docs.tex
