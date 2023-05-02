@@ -34,8 +34,8 @@ def main():
 
     while not validTeam:
         print("\nTeams:", [item.title() for item in AVAILABLE_TEAMS])
-        team = input("Please input new user's team: ")
-        validTeam = team.lower() in AVAILABLE_TEAMS
+        team = input("Please input new user's team: ").lower()
+        validTeam = team in AVAILABLE_TEAMS
         if not validTeam:
             print("User must be in one of the teams listed.")
 
