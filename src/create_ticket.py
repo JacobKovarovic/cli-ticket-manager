@@ -6,8 +6,8 @@ Postcondition: New ticket is created and stored.
 
 from sys import exit
 import json
-from utils.tickets import Ticket
-from utils.tasks import Task
+from utils.ticket import Ticket
+from utils.task import Task
 from utils.user_operations import check_logged_out, get_loggedin_user, load_tickets, store_tickets
 
 def main():

@@ -5,7 +5,7 @@ If no tasks have been claimed, displays the message "User has no claimed tasks."
 
 from textwrap import indent
 from utils.user_operations import check_logged_out, load_tickets, get_loggedin_user
-from utils.queues import PriorityQueue
+from utils.queue import PriorityQueue
 
 def main():
     check_logged_out()

@@ -1,5 +1,5 @@
-from utils.nodes import Node
-from utils.heaps import MinHeap
+from utils.node import Node
+from utils.heap import MinHeap
 
 class _AbstractQueue():
     """

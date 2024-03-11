@@ -6,7 +6,7 @@ Arguments:
 """
 
 from utils.user_operations import check_logged_out, load_tickets
-from utils.queues import PriorityQueue
+from utils.queue import PriorityQueue
 import sys
 
 def main():
