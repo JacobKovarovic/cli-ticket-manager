@@ -4,8 +4,8 @@ If there are no active tasks, the message "No tickets found, your team is all cl
 """
 
 from textwrap import indent
-from src.queues import PriorityQueue
-from src.user_operations import load_tickets, check_logged_out, get_loggedin_user
+from utils.queues import PriorityQueue
+from utils.user_operations import load_tickets, check_logged_out, get_loggedin_user
 
 def main():
     check_logged_out()

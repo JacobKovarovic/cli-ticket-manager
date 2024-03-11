@@ -5,8 +5,8 @@ Arguments:
 -c, -closed: Print closed tickets
 """
 
-from src.user_operations import check_logged_out, load_tickets
-from src.queues import PriorityQueue
+from utils.user_operations import check_logged_out, load_tickets
+from utils.queues import PriorityQueue
 import sys
 
 def main():
