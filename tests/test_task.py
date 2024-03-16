@@ -71,7 +71,7 @@ def test_eq_operator(task1,task2):
     # Assert that the comparison result is False
     assert result==False, "Expected task1 to not equal task2"
 
-#ADD: to string test
+#To string test
 def test_str_operator(task1):
     
     # Call the __str__ method
