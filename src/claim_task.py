@@ -5,7 +5,7 @@ Postcondition: Set task to claimed by user if task is not claimed, ticket store 
 """
 
 import sys
-from src.user_operations import check_logged_out, load_tickets, store_tickets, get_loggedin_user
+from utils.user_operations import check_logged_out, load_tickets, store_tickets, get_loggedin_user
 
 def main():
     check_logged_out()

@@ -3,7 +3,7 @@ Precondition: User must be logged in
 Postcondition: User is logged out, data in session file is deleted
 """
 
-from src.user_operations import check_logged_out
+from utils.user_operations import check_logged_out
 
 def main():
     check_logged_out()

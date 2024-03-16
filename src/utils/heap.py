@@ -1,4 +1,4 @@
-from src.nodes import TreeNode
+from utils.node import TreeNode
 
 class _AbstractHeap():
     """

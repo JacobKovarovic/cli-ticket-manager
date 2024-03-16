@@ -1,6 +1,6 @@
-from src.queues import Queue
+from utils.queue import Queue
 from datetime import date, timedelta, datetime
-from src.tasks import Task
+from utils.task import Task
 
 class Ticket:
     """

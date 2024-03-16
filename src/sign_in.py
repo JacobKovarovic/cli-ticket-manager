@@ -5,7 +5,7 @@ Precondition: Username must exist in users store.
 Postcondition: Session file contains signed-in user username and team for other scripts to use
 """
 
-from src.user_operations import check_logged_in
+from utils.user_operations import check_logged_in
 
 def main():
     check_logged_in()

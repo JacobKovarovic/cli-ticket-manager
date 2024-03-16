@@ -4,7 +4,7 @@ Usage: view_ticket.py "<ticketName>"
 """
 
 import sys
-from src.user_operations import check_logged_out, load_tickets
+from utils.user_operations import check_logged_out, load_tickets
 
 def main():
     check_logged_out()
