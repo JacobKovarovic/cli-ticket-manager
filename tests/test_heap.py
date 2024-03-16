@@ -1,7 +1,7 @@
 import pytest
 import sys
 import os
-from src.heaps import MinHeap
+from src.utils.heap import MinHeap
 # Set path for module imports from parent directory
 sys.path.insert(1, os.path.join(sys.path[0], '..')) 
 

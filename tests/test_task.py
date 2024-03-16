@@ -3,7 +3,7 @@ import os
 import sys
 from datetime import date, timedelta, datetime
 sys.path.insert(1, os.path.join(sys.path[0], '..')) 
-from src.tasks import Task
+from src.utils.task import Task
 
 @pytest.fixture
 def task1():
