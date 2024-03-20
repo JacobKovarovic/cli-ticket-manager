@@ -1,6 +1,9 @@
-from utils.queue import Queue
+import os
+import sys
+sys.path.insert(1, os.path.join(sys.path[0], '..')) 
 from datetime import date, timedelta, datetime
-from utils.task import Task
+from queue import Queue
+from task import Task
 
 class Ticket:
     """
