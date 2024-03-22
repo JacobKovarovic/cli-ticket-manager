@@ -3,27 +3,23 @@ Trigger a series of prompts to create a new ticket.
 Precondition: User is on management team.
 Postcondition: New ticket is created and stored.
 """
-
 from sys import exit
 import json
-from utils.ticket import Ticket
-from utils.task import Task
-from utils.user_operations import check_logged_out, get_loggedin_user, load_tickets, store_tickets
+from cli_ticket_manager.classes.ticket import Ticket
+from cli_ticket_manager.classes.task import Task
+from cli_ticket_manager.classes.user import User
 
-def main():
-    check_logged_out()
-    user = get_loggedin_user()
-    allTickets = load_tickets()
-
-    if user[1] != 'management':
-        exit("Only managers can create tickets!")
+def create_ticket(user: User, args: list[str]):
+    if user.team != 'management':
+        print("Only managers can create tickets!")
+        return
 
     AVAILABLE_TEAMS = ["programming", "art", "sound", "quality assurance", "management"]
 
     title = input("Input ticket title: ")
-    if allTickets != []:
-        if title in [ticket.getTitle for ticket in allTickets]:
-            raise ValueError("Cannot create duplicate ticket.")
+    if user.session.tickets != []:
+        if title in [ticket.getTitle for ticket in user.session.tickets]:
+            print("Cannot create duplicate ticket.")
 
     ticket_description = input("Input ticket description: ")
     tasks = []
@@ -74,9 +70,6 @@ def main():
 
     newTicket = Ticket(title, ticket_description, tasks, priority)
 
-    allTickets.append(newTicket)
-    store_tickets(allTickets)
+    user.session.tickets.append(newTicket)
+    user.session.save_tickets()
     print("New ticket has been created.")
-
-if __name__ == "__main__":
-    main()

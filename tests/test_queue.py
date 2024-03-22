@@ -1,8 +1,8 @@
 import os
 import sys
 import pytest
-from src.utils.queue import Queue, PriorityQueue
-from src.utils.task import Task
+from src.cli_ticket_manager.classes.queue import Queue, PriorityQueue
+from src.cli_ticket_manager.classes.task import Task
 
 @pytest.fixture
 def q():

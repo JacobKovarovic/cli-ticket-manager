@@ -9,12 +9,12 @@ Programming | Art | Sound | Quality Assurance | Management
 import json
 import re
 
-def main():
+def register_user():
     AVAILABLE_TEAMS = ["programming", "art", "sound", "quality assurance", "management"]
     validUsername = False
     validTeam = False
 
-    usersFile = open('users.json', 'r')
+    usersFile = open('data/users.json', 'r+')
     fileContents = usersFile.readline()
     if fileContents != '':
         users = json.loads(fileContents)
@@ -25,7 +25,7 @@ def main():
     while not validUsername:
         username = input("Please input new user's username: ")
         if users != []:
-            if username in [user[0] for user in users]:
+            if username in [user.username for user in users]:
                 print("Username taken.")
                 continue
         validUsername = re.search("^[a-zA-Z0-9_-]{3,15}$", username) is not None
@@ -41,10 +41,7 @@ def main():
 
     users.append([username, team])
 
-    usersFile = open('users.json', 'w')
+    usersFile = open('data/users.json', 'w')
     usersFile.write(json.dumps(users))
     usersFile.close()
     print(f"User {username} on team {team.capitalize()} registered.")
-
-if __name__ == "__main__":
-    main()

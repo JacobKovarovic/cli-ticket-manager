@@ -5,36 +5,35 @@ Arguments:
 -c, -closed: Print closed tickets
 """
 
-from utils.user_operations import check_logged_out, load_tickets
-from utils.queue import PriorityQueue
-import sys
+from cli_ticket_manager.classes.user import User
+from cli_ticket_manager.classes.queue import PriorityQueue
 
-def main():
-    check_logged_out()
+def list_tickets(user: User, args: list[str]):
     valid_arguments = ['-t', '-tasks', '-c', '-closed']
     usage = "Usage:\nlist_tickets.py\n\t-t -tasks (Print all tasks in all tickets)"
     printTasks = False
     printClosed = False
 
-    if len(sys.argv) > 3:
-        raise KeyError("Too many arguments.\n" + usage)
-    if len(sys.argv) > 1:
-        for arg in sys.argv[1:]:
+    if len(args) > 2:
+        print("Too many arguments.\n" + usage)
+        return
+    if len(args) > 0:
+        for arg in args:
             arg.rstrip()
             if arg not in valid_arguments:
-                raise ValueError("Invalid argument.\n" + usage)
+                print("Invalid argument.\n" + usage)
+                return
             if arg in ['-t', '-tasks']:
                 printTasks = True
             if arg in ['-c', '-closed']:
                 printClosed = True
 
-    allTickets = load_tickets()
     pq = PriorityQueue()
     print()
-    if allTickets == []:
+    if user.session.tickets == []:
         print("No tickets to list.")
     else:
-        for ticket in allTickets:
+        for ticket in user.session.tickets:
             if not printClosed:
                 if ticket.isClosed():
                     continue
@@ -49,6 +48,4 @@ def main():
                     print(" - Closed" if nextTicket.isClosed() else " - Open")
                 else:
                     print()
-
-if __name__ == "__main__":
-    main()
+    print()

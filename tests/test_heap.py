@@ -1,5 +1,5 @@
 import pytest
-from src.utils.heap import MinHeap
+from src.cli_ticket_manager.classes.heap import MinHeap
 
 @pytest.fixture
 def myheap():

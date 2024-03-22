@@ -4,19 +4,15 @@ If there are no active tasks, the message "No tickets found, your team is all cl
 """
 
 from textwrap import indent
-from utils.queue import PriorityQueue
-from utils.user_operations import load_tickets, check_logged_out, get_loggedin_user
+from cli_ticket_manager.classes.queue import PriorityQueue
+from cli_ticket_manager.classes.user import User
 
-def main():
-    check_logged_out()
-    user = get_loggedin_user()
-    allTickets = load_tickets()
-
+def check_active_tasks(user: User, args: list[str]):
     relevantTasks = PriorityQueue()
-    for ticket in allTickets:
+    for ticket in user.session.tickets:
         if not ticket.isClosed():
             for task in ticket.getUnfinishedTasks():
-                if task.getTeam() == user[1]:
+                if task.getTeam() == user.team:
                     relevantTasks.enqueue(task)
 
     if relevantTasks.isEmpty():
@@ -25,6 +21,3 @@ def main():
         for task in relevantTasks:
             print(task.getParentTicket())
             print(indent(str(task), "\t"))
-
-if __name__ == "__main__":
-    main()

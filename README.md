@@ -1,6 +1,25 @@
-# For SSE554
-## See documentation.pdf in Canvas submission for more project details.
+# CLI Ticket Manager
 
-[Pydoc for Frontend Scripts](doc/frontend_docs.txt)
+## Usage
 
-[Pydoc for Backend Classes](doc/backend_docs.txt)
+`ctm` is command prefix.
+
+- `ctm register_user`: Register new user.
+- `ctm login <username>`: Log user in and begin program.
+
+## Commands
+
+| Command | Desc |
+|---------|------|
+| check_active_tasks | |
+| claim_task | |
+| create_ticket | |
+| finish_task | |
+| force_close_ticket | |
+| list_claimed_tasks | |
+| list_tickets | |
+| view_ticket | |
+
+## Developers
+
+# TODO: Finish README

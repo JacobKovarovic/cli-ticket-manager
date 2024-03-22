@@ -2,8 +2,8 @@ import os
 import sys
 import pytest
 from datetime import date, timedelta
-from src.utils.task import Task
-from src.utils.ticket import Ticket
+from src.cli_ticket_manager.classes.task import Task
+from src.cli_ticket_manager.classes.ticket import Ticket
 
 @pytest.fixture
 def ticket1():

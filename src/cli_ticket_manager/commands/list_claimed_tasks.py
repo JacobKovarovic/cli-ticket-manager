@@ -4,21 +4,19 @@ If no tasks have been claimed, displays the message "User has no claimed tasks."
 """
 
 from textwrap import indent
-from utils.user_operations import check_logged_out, load_tickets, get_loggedin_user
-from utils.queue import PriorityQueue
+from cli_ticket_manager.classes.user import User
+from cli_ticket_manager.classes.queue import PriorityQueue
 
-def main():
-    check_logged_out()
-    user = get_loggedin_user()
-    allTickets = load_tickets()
-    if allTickets == []:
-        raise ValueError("No tickets.")
+def list_claimed_tasks(user: User, args: list[str]):
+    if user.session.tickets == []:
+        print("No tickets.")
+        return
 
     hasTask = False
     pq = PriorityQueue()
-    for ticket in allTickets:
+    for ticket in user.session.tickets:
         task = ticket.getNextTask()
-        if not ticket.isClosed() and task.getOwner() == user[0]:
+        if not ticket.isClosed() and task.getOwner() == user.username:
             pq.enqueue(task)
             hasTask = True
 
@@ -29,6 +27,3 @@ def main():
         for task in pq:
             print(task.getParentTicket())
             print(indent(str(task), "\t"))
-
-if __name__ == "__main__":
-    main()
