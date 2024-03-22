@@ -1,7 +1,6 @@
 import os
 import sys
 import pytest
-sys.path.insert(1, os.path.join(sys.path[0], '..')) 
 from datetime import date, timedelta
 from src.utils.task import Task
 from src.utils.ticket import Ticket

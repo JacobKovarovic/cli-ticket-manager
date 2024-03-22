@@ -1,7 +1,6 @@
 import os
 import sys
 import pytest
-sys.path.insert(1, os.path.join(sys.path[0], '..')) 
 from src.utils.queue import Queue, PriorityQueue
 from src.utils.task import Task
 

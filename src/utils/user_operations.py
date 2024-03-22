@@ -4,7 +4,7 @@ Collection of functions used in frontend scripts.
 
 from sys import exit
 import json
-from utils.ticket import Ticket
+from .ticket import Ticket
 
 def check_logged_in():
     """
