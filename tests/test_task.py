@@ -92,11 +92,10 @@ def test_toList(task3,expected_list_output):
 
 
 # Test function using the fixture
-@pytest.mark.skip(reason="FAILS because dayTilDue method is implemented wrong")
 def test_daysTilDue(task3):
     # Calculate the expected number of days until the task is due
     # by adding the leadDays to the current date.
-    expected_days = (date.today() - task3.dueDate)
+    expected_days = (date.today() - task3.dueDate).days
     print(expected_days) 
     # Call the daysTilDue method
     days_til_due = task3.daysTilDue()

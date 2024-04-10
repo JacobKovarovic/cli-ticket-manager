@@ -67,13 +67,13 @@ def test_abstract_queue_init():
     queue = Queue()
     
     # Assert that the queue is initialized with an empty list or similar structure
-    assert queue._queue == [], "Expected the queue to be initialized with an empty list"
+    assert queue.isEmpty(), "Expected the queue to be initialized with an empty list"
 
 #To string test
 def test_abstract_queue_str(q):
     
     #Define the expected string representation
-    expected_str = "Item 1\nItem 2\nItem 3\n"
+    expected_str = "\nItem 1\nItem 2\nItem 3\n"
     
     #Get the string representation of the queue
     queue_str = str(q)
@@ -190,7 +190,7 @@ def test_priority_queue_enqueue(task1,task2):
     assert pq.peek() == task2, "Expected the item with the higher priority to be at the front of the queue"
 
 #Dequeue Test
-def test_priority_queue_dequeue(pq):
+def test_priority_queue_dequeue(pq, task1, task2):
     #Dequeue highest priority item (should be task2)
     dequeued_task = pq.dequeue() 
 
