@@ -83,8 +83,8 @@ class Task():
         """
         Return: Days remaining from today until task due date.
         """
-        day1 = date.today().strftime("%Y, %m, %d")
-        day2 = self.dueDate.strftime("%Y, %m, %d")
+        day1 = date.today()
+        day2 = self.dueDate
         return abs((day2 - day1).days)
     
     def getLeadDays(self):

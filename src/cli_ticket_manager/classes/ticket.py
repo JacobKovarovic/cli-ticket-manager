@@ -131,8 +131,8 @@ class Ticket:
         """
         Return: Days until ticket due date from today
         """
-        day1 = date.strptime(date.today(), "%Y-%m-%d")
-        day2 = date.strptime(self.dueDate, "%Y-%m-%d")
+        day1 = date.today()
+        day2 = self.dueDate
         return abs((day2 - day1).days)
     
     def isClosed(self):
