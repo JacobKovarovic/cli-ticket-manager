@@ -33,7 +33,7 @@ class _AbstractQueue():
         copyQueue = self.clone()
         while not copyQueue.isEmpty():
             result.append(copyQueue.dequeue())
-        format(result)
+        return str(result)
     
     def __iter__(self):
         """
