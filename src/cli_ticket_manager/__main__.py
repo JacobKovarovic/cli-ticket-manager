@@ -4,7 +4,6 @@ import shlex
 from .commands import *
 
 user_commands = {
-    "exit": "exit",
     "check_active_tasks": check_active_tasks,
     "claim_task": claim_task,
     "create_ticket": create_ticket,
