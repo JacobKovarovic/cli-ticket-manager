@@ -29,5 +29,3 @@
 | view_ticket | |
 
 ## Developers
-
-# TODO: Finish README
