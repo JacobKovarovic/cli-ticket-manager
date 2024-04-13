@@ -1,8 +1,16 @@
 # CLI Ticket Manager
 
+## Installation
+
+**Requires Python 3.10+**
+
+1. Clone the repository.
+2. Run `install.sh`.
+3. See usage for usage instructions.
+
 ## Usage
 
-`ctm` is command prefix.
+`ctm` is the command prefix.
 
 - `ctm register_user`: Register new user.
 - `ctm login <username>`: Log user in and begin program.
